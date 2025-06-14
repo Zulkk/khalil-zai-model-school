@@ -1,0 +1,2142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khalil Zai Model School - Parent Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+/* Login Section */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1e5799 0%, #207cca 51%, #2989d8 100%);
+}
+
+.login-box {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+}
+
+.school-logo img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 1rem;
+}
+
+.school-logo h1 {
+    color: #1e5799;
+    margin-bottom: 0.5rem;
+    font-size: 1.8rem;
+}
+
+.school-logo h2 {
+    color: #666;
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+    font-weight: normal;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #555;
+    font-weight: 600;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    border-color: #2989d8;
+    outline: none;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    background: #2989d8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.login-btn:hover {
+    background: #1e5799;
+}
+
+.forgot-password {
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.forgot-password a {
+    color: #2989d8;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}
+
+/* Portal Styles */
+.portal-container {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: 70px 1fr;
+    min-height: 100vh;
+}
+
+.portal-header {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    z-index: 10;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.header-logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 1rem;
+}
+
+.header-left h1 {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.user-info {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.user-icon {
+    font-size: 2rem;
+    color: #555;
+    margin-left: 0.5rem;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    padding: 0.5rem 0;
+    display: none;
+    z-index: 100;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 0.7rem 1rem;
+    color: #333;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.dropdown-menu a:hover {
+    background: #f5f5f5;
+}
+
+.dropdown-menu a i {
+    margin-right: 0.7rem;
+    color: #555;
+}
+
+.user-info:hover .dropdown-menu {
+    display: block;
+}
+
+.sidebar {
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+    background: #1e5799;
+    color: white;
+    padding: 1rem 0;
+}
+
+.sidebar nav ul {
+    list-style: none;
+}
+
+.sidebar nav ul li {
+    padding: 0.8rem 1.5rem;
+    margin: 0.2rem 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: background 0.2s;
+}
+
+.sidebar nav ul li i {
+    margin-right: 1rem;
+    font-size: 1.1rem;
+}
+
+.sidebar nav ul li:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar nav ul li.active {
+    background: rgba(255, 255, 255, 0.2);
+    border-left: 4px solid white;
+}
+
+.main-content {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    padding: 2rem;
+    background: #f5f5f5;
+    overflow-y: auto;
+}
+
+.content-section {
+    display: none;
+}
+
+.content-section.active {
+    display: block;
+}
+
+/* Dashboard Styles */
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.card {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+}
+
+.card-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1.5rem;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.card-icon.blue {
+    background: #2989d8;
+}
+
+.card-icon.green {
+    background: #4CAF50;
+}
+
+.card-icon.orange {
+    background: #FF9800;
+}
+
+.card-icon.red {
+    background: #F44336;
+}
+
+.card-info h3 {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 0.3rem;
+}
+
+.card-info p {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.dashboard-announcements {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.dashboard-announcements h3 {
+    margin-bottom: 1.5rem;
+    color: #333;
+    display: flex;
+    align-items: center;
+}
+
+.dashboard-announcements h3 i {
+    margin-right: 0.7rem;
+    color: #2989d8;
+}
+
+.announcement {
+    padding: 1rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.announcement:last-child {
+    border-bottom: none;
+}
+
+.announcement-date {
+    font-size: 0.8rem;
+    color: #888;
+    margin-bottom: 0.3rem;
+}
+
+.announcement-title {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #2989d8;
+}
+
+.announcement-content {
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Student Information Styles */
+.student-profile {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.profile-pic {
+    margin-right: 2rem;
+}
+
+.profile-pic img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #f5f5f5;
+}
+
+.profile-info h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.profile-info table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.profile-info table tr {
+    border-bottom: 1px solid #eee;
+}
+
+.profile-info table tr:last-child {
+    border-bottom: none;
+}
+
+.profile-info table th, 
+.profile-info table td {
+    padding: 0.7rem 0;
+    text-align: left;
+}
+
+.profile-info table th {
+    width: 150px;
+    color: #666;
+    font-weight: normal;
+}
+
+.profile-info table td {
+    font-weight: 500;
+}
+
+.student-additional-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
+}
+
+.info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.info-card h3 {
+    margin-bottom: 1.5rem;
+    color: #333;
+    display: flex;
+    align-items: center;
+}
+
+.info-card h3 i {
+    margin-right: 0.7rem;
+    color: #2989d8;
+}
+
+.info-card table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.info-card table tr {
+    border-bottom: 1px solid #eee;
+}
+
+.info-card table tr:last-child {
+    border-bottom: none;
+}
+
+.info-card table th, 
+.info-card table td {
+    padding: 0.7rem 0;
+    text-align: left;
+}
+
+.info-card table th {
+    width: 120px;
+    color: #666;
+    font-weight: normal;
+}
+
+.info-card table td {
+    font-weight: 500;
+}
+
+/* Attendance Styles */
+.attendance-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.summary-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+.summary-card.present {
+    border-top: 4px solid #4CAF50;
+}
+
+.summary-card.absent {
+    border-top: 4px solid #F44336;
+}
+
+.summary-card.late {
+    border-top: 4px solid #FF9800;
+}
+
+.summary-card.percentage {
+    border-top: 4px solid #2989d8;
+}
+
+.summary-card h3 {
+    color: #666;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.summary-card p {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.3rem;
+}
+
+.summary-card span {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.attendance-filter {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    align-items: center;
+}
+
+.attendance-filter select {
+    padding: 0.7rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: white;
+}
+
+.btn {
+    padding: 0.7rem 1.5rem;
+    background: #2989d8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn:hover {
+    background: #1e5799;
+}
+
+.attendance-calendar {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    overflow-x: auto;
+}
+
+.attendance-calendar table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.attendance-calendar th {
+    background: #f9f9f9;
+    padding: 0.8rem;
+    text-align: left;
+    color: #555;
+    font-weight: 600;
+}
+
+.attendance-calendar td {
+    padding: 0.8rem;
+    border-bottom: 1px solid #eee;
+    color: #333;
+}
+
+.attendance-calendar tr:last-child td {
+    border-bottom: none;
+}
+
+/* Grades Styles */
+.grades-filter {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    align-items: center;
+}
+
+.grades-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.grades-table {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+    overflow-x: auto;
+}
+
+.grades-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.grades-table th {
+    background: #f9f9f9;
+    padding: 0.8rem;
+    text-align: left;
+    color: #555;
+    font-weight: 600;
+}
+
+.grades-table td {
+    padding: 0.8rem;
+    border-bottom: 1px solid #eee;
+    color: #333;
+}
+
+.grades-table tr:last-child td {
+    border-bottom: none;
+}
+
+.grades-chart {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    height: 400px;
+}
+
+/* Timetable Styles */
+.timetable-filter {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    align-items: center;
+}
+
+.timetable-view {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    overflow-x: auto;
+}
+
+.timetable-view table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.timetable-view th {
+    background: #f9f9f9;
+    padding: 0.8rem;
+    text-align: center;
+    color: #555;
+    font-weight: 600;
+}
+
+.timetable-view td {
+    padding: 0.8rem;
+    border: 1px solid #eee;
+    color: #333;
+    text-align: center;
+}
+
+/* Fee Payment Styles */
+.fee-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.fee-history {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+    overflow-x: auto;
+}
+
+.fee-history h3 {
+    margin-bottom: 1.5rem;
+}
+
+.fee-history table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.fee-history th {
+    background: #f9f9f9;
+    padding: 0.8rem;
+    text-align: left;
+    color: #555;
+    font-weight: 600;
+}
+
+.fee-history td {
+    padding: 0.8rem;
+    border-bottom: 1px solid #eee;
+    color: #333;
+}
+
+.fee-history tr:last-child td {
+    border-bottom: none;
+}
+
+.online-payment {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.online-payment h3 {
+    margin-bottom: 1.5rem;
+}
+
+.payment-form {
+    max-width: 500px;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #555;
+    font-weight: 600;
+}
+
+.form-group input, 
+.form-group select, 
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.form-group input:focus, 
+.form-group select:focus, 
+.form-group textarea:focus {
+    border-color: #2989d8;
+    outline: none;
+}
+
+.card-details-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.card-details-row > div {
+    flex: 1;
+}
+
+.pay-now-btn {
+    background: #4CAF50;
+    padding: 0.8rem 1.5rem;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.pay-now-btn:hover {
+    background: #3e8e41;
+}
+
+/* Messages Styles */
+.messages-container {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 1.5rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    height: 600px;
+}
+
+.message-sidebar {
+    border-right: 1px solid #eee;
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+.message-search {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.message-search input {
+    width: 100%;
+    padding: 0.7rem 2rem 0.7rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.message-search i {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+}
+
+.message-list {
+    overflow-y: auto;
+}
+
+.message-item {
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+.message-item:hover {
+    background: #f9f9f9;
+}
+
+.message-item.active {
+    background: #e6f2ff;
+}
+
+.message-sender {
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+}
+
+.message-preview {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.message-time {
+    color: #888;
+    font-size: 0.8rem;
+}
+
+.message-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.message-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.message-sender-info h3 {
+    color: #333;
+    margin-bottom: 0.3rem;
+}
+
+.message-sender-info p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.message-time-info {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.message-subject {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: #2989d8;
+}
+
+.message-body {
+    flex: 1;
+    line-height: 1.6;
+    color: #333;
+}
+
+.message-body p {
+    margin-bottom: 1rem;
+}
+
+.message-actions {
+    display: flex;
+    gap: 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #eee;
+}
+
+.reply-btn, .forward-btn, .delete-btn {
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+}
+
+.reply-btn {
+    background: #2989d8;
+    color: white;
+}
+
+.forward-btn {
+    background: #f5f5f5;
+    color: #333;
+}
+
+.delete-btn {
+    background: #f44336;
+    color: white;
+}
+
+.reply-btn i, .forward-btn i, .delete-btn i {
+    margin-right: 0.5rem;
+}
+
+/* Settings Styles */
+.settings-tabs {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.tab-buttons {
+    display: flex;
+    border-bottom: 1px solid #eee;
+}
+
+.tab-btn {
+    padding: 1rem 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #666;
+    position: relative;
+}
+
+.tab-btn.active {
+    color: #2989d8;
+    font-weight: 600;
+}
+
+.tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: #2989d8;
+}
+
+.tab-content {
+    padding: 1.5rem;
+}
+
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+.form-check {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.form-check input {
+    margin-right: 0.7rem;
+}
+
+.form-check label {
+    color: #333;
+}
+
+.save-btn {
+    background: #2989d8;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    transition: background 0.2s;
+}
+
+.save-btn:hover {
+    background: #1e5799;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .portal-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: 70px auto 1fr;
+    }
+
+    .portal-header {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+    }
+
+    .sidebar {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+    }
+
+    .main-content {
+        grid-column: 1 / 2;
+        grid-row: 3 / 4;
+    }
+
+    .sidebar nav ul {
+        display: flex;
+        overflow-x: auto;
+    }
+
+    .sidebar nav ul li {
+        white-space: nowrap;
+    }
+
+    .sidebar nav ul li i {
+        margin-right: 0.5rem;
+    }
+
+    .messages-container {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+
+    .message-sidebar {
+        border-right: none;
+        border-bottom: 1px solid #eee;
+    }
+}
+
+@media (max-width: 768px) {
+    .student-profile {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .profile-pic {
+        margin-right: 0;
+        margin-bottom: 1.5rem;
+    }
+
+    .profile-info table th {
+        width: auto;
+        display: block;
+        text-align: center;
+        padding-bottom: 0;
+    }
+
+    .profile-info table td {
+        display: block;
+        text-align: center;
+        padding-top: 0;
+    }
+
+    .student-additional-info {
+        grid-template-columns: 1fr;
+    }
+
+    .card-details-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .login-box {
+        padding: 1.5rem;
+    }
+
+    .dashboard-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .attendance-summary, .grades-summary, .fee-summary {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .tab-buttons {
+        flex-direction: column;
+    }
+
+    .tab-btn {
+        text-align: left;
+    }
+
+    .tab-btn.active::after {
+        width: 3px;
+        height: 100%;
+        bottom: auto;
+        left: auto;
+        right: 0;
+    }
+}
+    </style>
+</head>
+<body>
+   
+    <!-- Login Section -->
+    <div id="login-section" class="login-container">
+        <div class="login-box">
+            <div class="school-logo">
+                <img src="khalil.png" alt="Khalil Zai Model School Logo">
+                <h1>Khalil Zai Model School</h1>
+                <h2>Parent Portal</h2>
+            </div>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="username"><i class="fas fa-user"></i> Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password"><i class="fas fa-lock"></i> Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="login-btn">Login</button>
+                <div class="forgot-password">
+                    <a href="#">Forgot Password?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Main Portal (hidden initially) -->
+    <div id="portal-section" class="portal-container" style="display: none;">
+        <!-- Header -->
+        <header class="portal-header">
+            <div class="header-left">
+                <img src="khalil.png" alt="School Logo" class="header-logo">
+                <h1>Khalil Zai Model School - Parent Portal</h1>
+            </div>
+            <div class="header-right">
+                <div class="user-info">
+                    <span id="welcome-message">Welcome, Parent</span>
+                    <i class="fas fa-user-circle user-icon"></i>
+                    <div class="dropdown-menu">
+                        <a href="#"><i class="fas fa-user"></i> Profile</a>
+                        <a href="#"><i class="fas fa-cog"></i> Settings</a>
+                        <a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav>
+                <ul>
+                    <li class="active" data-section="dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</li>
+                    <li data-section="student-info"><i class="fas fa-user-graduate"></i> Student Information</li>
+                    <li data-section="attendance"><i class="fas fa-calendar-check"></i> Attendance</li>
+                    <li data-section="grades"><i class="fas fa-award"></i> Grades</li>
+                    <li data-section="timetable"><i class="fas fa-calendar-alt"></i> Timetable</li>
+                    <li data-section="fees"><i class="fas fa-money-bill-wave"></i> Fee Payment</li>
+                    <li data-section="messages"><i class="fas fa-envelope"></i> Messages</li>
+                    <li data-section="settings"><i class="fas fa-cog"></i> Settings</li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Section -->
+            <section id="dashboard-section" class="content-section active">
+                <h2><i class="fas fa-tachometer-alt"></i> Dashboard</h2>
+                <div class="dashboard-cards">
+                    <div class="card">
+                        <div class="card-icon blue">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <div class="card-info">
+                            <h3>Student</h3>
+                            <p id="student-name">Ali Khan</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon green">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="card-info">
+                            <h3>Attendance</h3>
+                            <p id="attendance-percent">95%</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon orange">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <div class="card-info">
+                            <h3>Average Grade</h3>
+                            <p id="average-grade">A-</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon red">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                        <div class="card-info">
+                            <h3>Fee Status</h3>
+                            <p id="fee-status">Paid</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-announcements">
+                    <h3><i class="fas fa-bullhorn"></i> Announcements</h3>
+                    <div class="announcement-list">
+                        <div class="announcement">
+                            <div class="announcement-date">June 15, 2023</div>
+                            <div class="announcement-title">Parent-Teacher Meeting</div>
+                            <div class="announcement-content">
+                                The next parent-teacher meeting will be held on June 20th at 2:00 PM in the school auditorium.
+                            </div>
+                        </div>
+                        <div class="announcement">
+                            <div class="announcement-date">June 10, 2023</div>
+                            <div class="announcement-title">Summer Vacation</div>
+                            <div class="announcement-content">
+                                School will be closed for summer vacation from June 25th to August 14th.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Student Information Section -->
+            <section id="student-info-section" class="content-section">
+                <h2><i class="fas fa-user-graduate"></i> Student Information</h2>
+                <div class="student-profile">
+                    <div class="profile-pic">
+                        <img src="https://via.placeholder.com/150x150?text=Student" alt="Student Photo">
+                    </div>
+                    <div class="profile-info">
+                        <h3 id="student-fullname">Ali Khan</h3>
+                        <table>
+                            <tr>
+                                <th>Admission Number:</th>
+                                <td id="admission-number">KZMS-2023-125</td>
+                            </tr>
+                            <tr>
+                                <th>Class:</th>
+                                <td id="student-class">Grade 5</td>
+                            </tr>
+                            <tr>
+                                <th>Section:</th>
+                                <td id="student-section">A</td>
+                            </tr>
+                            <tr>
+                                <th>Date of Birth:</th>
+                                <td id="student-dob">January 15, 2012</td>
+                            </tr>
+                            <tr>
+                                <th>Gender:</th>
+                                <td id="student-gender">Male</td>
+                            </tr>
+                            <tr>
+                                <th>Blood Group:</th>
+                                <td id="student-blood">O+</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="student-additional-info">
+                    <div class="info-card">
+                        <h3><i class="fas fa-home"></i> Address Information</h3>
+                        <table>
+                            <tr>
+                                <th>Address:</th>
+                                <td id="student-address">House #123, Street 45, Sector G-10/4, Islamabad</td>
+                            </tr>
+                            <tr>
+                                <th>City:</th>
+                                <td id="student-city">Islamabad</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="info-card">
+                        <h3><i class="fas fa-phone"></i> Contact Information</h3>
+                        <table>
+                            <tr>
+                                <th>Father's Name:</th>
+                                <td id="father-name">Aslam Khan</td>
+                            </tr>
+                            <tr>
+                                <th>Father's Phone:</th>
+                                <td id="father-phone">0300-1234567</td>
+                            </tr>
+                            <tr>
+                                <th>Mother's Name:</th>
+                                <td id="mother-name">Ayesha Khan</td>
+                            </tr>
+                            <tr>
+                                <th>Mother's Phone:</th>
+                                <td id="mother-phone">0300-7654321</td>
+                            </tr>
+                            <tr>
+                                <th>Emergency Contact:</th>
+                                <td id="emergency-contact">0312-9876543 (Uncle)</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Attendance Section -->
+            <section id="attendance-section" class="content-section">
+                <h2><i class="fas fa-calendar-check"></i> Attendance</h2>
+                <div class="attendance-summary">
+                    <div class="summary-card present">
+                        <h3>Present</h3>
+                        <p>85</p>
+                        <span>Days</span>
+                    </div>
+                    <div class="summary-card absent">
+                        <h3>Absent</h3>
+                        <p>5</p>
+                        <span>Days</span>
+                    </div>
+                    <div class="summary-card late">
+                        <h3>Late</h3>
+                        <p>3</p>
+                        <span>Days</span>
+                    </div>
+                    <div class="summary-card percentage">
+                        <h3>Attendance %</h3>
+                        <p>95.4%</p>
+                        <span>This Year</span>
+                    </div>
+                </div>
+
+                <div class="attendance-filter">
+                    <select id="month-select">
+                        <option value="all">All Months</option>
+                        <option value="1">January</option>
+                        <option value="2">February</option>
+                        <option value="3">March</option>
+                        <option value="4">April</option>
+                        <option value="5">May</option>
+                        <option value="6">June</option>
+                        <option value="7">July</option>
+                        <option value="8">August</option>
+                        <option value="9">September</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                    </select>
+                    <select id="year-select">
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                    </select>
+                    <button id="apply-filter" class="btn">Apply</button>
+                </div>
+
+                <div class="attendance-calendar">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Remarks</th>
+                            </tr>
+                        </thead>
+                        <tbody id="attendance-table">
+                            <!-- Attendance data will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Grades Section -->
+            <section id="grades-section" class="content-section">
+                <h2><i class="fas fa-award"></i> Grades</h2>
+                <div class="grades-filter">
+                    <select id="term-select">
+                        <option value="1">Term 1</option>
+                        <option value="2">Term 2</option>
+                        <option value="3">Term 3</option>
+                    </select>
+                    <select id="year-select-grades">
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                    </select>
+                    <button id="apply-grades-filter" class="btn">Apply</button>
+                </div>
+
+                <div class="grades-summary">
+                    <div class="summary-card">
+                        <h3>Overall Grade</h3>
+                        <p>A-</p>
+                    </div>
+                    <div class="summary-card">
+                        <h3>Position in Class</h3>
+                        <p>5th</p>
+                    </div>
+                    <div class="summary-card">
+                        <h3>Total Marks</h3>
+                        <p>845/1000</p>
+                    </div>
+                </div>
+
+                <div class="grades-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Subject</th>
+                                <th>Marks Obtained</th>
+                                <th>Total Marks</th>
+                                <th>Percentage</th>
+                                <th>Grade</th>
+                                <th>Remarks</th>
+                            </tr>
+                        </thead>
+                        <tbody id="grades-data">
+                            <!-- Grades data will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="grades-chart">
+                    <canvas id="grades-chart"></canvas>
+                </div>
+            </section>
+
+            <!-- Timetable Section -->
+            <section id="timetable-section" class="content-section">
+                <h2><i class="fas fa-calendar-alt"></i> Timetable</h2>
+                <div class="timetable-filter">
+                    <select id="timetable-day">
+                        <option value="all">Full Week</option>
+                        <option value="monday">Monday</option>
+                        <option value="tuesday">Tuesday</option>
+                        <option value="wednesday">Wednesday</option>
+                        <option value="thursday">Thursday</option>
+                        <option value="friday">Friday</option>
+                        <option value="saturday">Saturday</option>
+                    </select>
+                    <button id="apply-timetable-filter" class="btn">Apply</button>
+                </div>
+
+                <div class="timetable-view">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Monday</th>
+                                <th>Tuesday</th>
+                                <th>Wednesday</th>
+                                <th>Thursday</th>
+                                <th>Friday</th>
+                                <th>Saturday</th>
+                            </tr>
+                        </thead>
+                        <tbody id="timetable-data">
+                            <!-- Timetable data will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Fee Payment Section -->
+            <section id="fees-section" class="content-section">
+                <h2><i class="fas fa-money-bill-wave"></i> Fee Payment</h2>
+                <div class="fee-summary">
+                    <div class="summary-card">
+                        <h3>Current Fee Status</h3>
+                        <p>Paid</p>
+                    </div>
+                    <div class="summary-card">
+                        <h3>Next Due Date</h3>
+                        <p>July 5, 2023</p>
+                    </div>
+                    <div class="summary-card">
+                        <h3>Amount Due</h3>
+                        <p>Rs. 5,000</p>
+                    </div>
+                </div>
+
+                <div class="fee-history">
+                    <h3>Payment History</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Amount</th>
+                                <th>Payment Method</th>
+                                <th>Transaction ID</th>
+                                <th>Status</th>
+                                <th>Receipt</th>
+                            </tr>
+                        </thead>
+                        <tbody id="fee-history-data">
+                            <!-- Fee history data will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="online-payment">
+                    <h3>Make Online Payment</h3>
+                    <form id="payment-form">
+                        <div class="form-group">
+                            <label for="payment-amount">Amount (Rs.)</label>
+                            <input type="number" id="payment-amount" value="5000" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="payment-method">Payment Method</label>
+                            <select id="payment-method">
+                                <option value="credit-card">Credit Card</option>
+                                <option value="debit-card">Debit Card</option>
+                                <option value="jazzcash">JazzCash</option>
+                                <option value="easypaisa">EasyPaisa</option>
+                            </select>
+                        </div>
+                        <div class="form-group" id="card-details">
+                            <label for="card-number">Card Number</label>
+                            <input type="text" id="card-number" placeholder="1234 5678 9012 3456">
+                            <div class="card-details-row">
+                                <div>
+                                    <label for="expiry-date">Expiry Date</label>
+                                    <input type="text" id="expiry-date" placeholder="MM/YY">
+                                </div>
+                                <div>
+                                    <label for="cvv">CVV</label>
+                                    <input type="text" id="cvv" placeholder="123">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" id="mobile-payment" style="display: none;">
+                            <label for="mobile-number">Mobile Number</label>
+                            <input type="text" id="mobile-number" placeholder="03001234567">
+                        </div>
+                        <button type="submit" class="btn pay-now-btn">Pay Now</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Messages Section -->
+            <section id="messages-section" class="content-section">
+                <h2><i class="fas fa-envelope"></i> Messages</h2>
+                <div class="messages-container">
+                    <div class="message-sidebar">
+                        <div class="message-search">
+                            <input type="text" placeholder="Search messages...">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="message-list">
+                            <div class="message-item active">
+                                <div class="message-sender">Principal's Office</div>
+                                <div class="message-preview">Parent-Teacher Meeting Reminder</div>
+                                <div class="message-time">Jun 15, 2:30 PM</div>
+                            </div>
+                            <div class="message-item">
+                                <div class="message-sender">Class Teacher</div>
+                                <div class="message-preview">About Ali's performance in Math</div>
+                                <div class="message-time">Jun 10, 10:15 AM</div>
+                            </div>
+                            <div class="message-item">
+                                <div class="message-sender">Sports Teacher</div>
+                                <div class="message-preview">Sports Day Participation</div>
+                                <div class="message-time">May 28, 4:45 PM</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="message-content">
+                        <div class="message-header">
+                            <div class="message-sender-info">
+                                <h3>Principal's Office</h3>
+                                <p>principal@kzms.edu.pk</p>
+                            </div>
+                            <div class="message-time-info">
+                                Jun 15, 2023, 2:30 PM
+                            </div>
+                        </div>
+                        <div class="message-subject">
+                            Parent-Teacher Meeting Reminder
+                        </div>
+                        <div class="message-body">
+                            <p>Dear Parents,</p>
+                            <p>This is a reminder about the upcoming Parent-Teacher meeting scheduled for June 20th at 2:00 PM in the school auditorium. Your presence is highly appreciated to discuss your child's progress.</p>
+                            <p>Please bring along your parent portal login details for reference during the meeting.</p>
+                            <p>Best regards,<br>Principal<br>Khalil Zai Model School</p>
+                        </div>
+                        <div class="message-actions">
+                            <button class="btn reply-btn"><i class="fas fa-reply"></i> Reply</button>
+                            <button class="btn forward-btn"><i class="fas fa-share"></i> Forward</button>
+                            <button class="btn delete-btn"><i class="fas fa-trash"></i> Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settings-section" class="content-section">
+                <h2><i class="fas fa-cog"></i> Settings</h2>
+                <div class="settings-tabs">
+                    <div class="tab-buttons">
+                        <button class="tab-btn active" data-tab="profile">Profile</button>
+                        <button class="tab-btn" data-tab="account">Account</button>
+                        <button class="tab-btn" data-tab="notifications">Notifications</button>
+                    </div>
+                    <div class="tab-content">
+                        <div id="profile-tab" class="tab-pane active">
+                            <h3>Profile Information</h3>
+                            <form id="profile-form">
+                                <div class="form-group">
+                                    <label for="profile-name">Name</label>
+                                    <input type="text" id="profile-name" value="Aslam Khan">
+                                </div>
+                                <div class="form-group">
+                                    <label for="profile-email">Email</label>
+                                    <input type="email" id="profile-email" value="parent@example.com">
+                                </div>
+                                <div class="form-group">
+                                    <label for="profile-phone">Phone</label>
+                                    <input type="tel" id="profile-phone" value="03001234567">
+                                </div>
+                                <div class="form-group">
+                                    <label for="profile-address">Address</label>
+                                    <textarea id="profile-address">House #123, Street 45, Sector G-10/4, Islamabad</textarea>
+                                </div>
+                                <button type="submit" class="btn save-btn">Save Changes</button>
+                            </form>
+                        </div>
+                        <div id="account-tab" class="tab-pane">
+                            <h3>Account Security</h3>
+                            <form id="password-form">
+                                <div class="form-group">
+                                    <label for="current-password">Current Password</label>
+                                    <input type="password" id="current-password">
+                                </div>
+                                <div class="form-group">
+                                    <label for="new-password">New Password</label>
+                                    <input type="password" id="new-password">
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirm-password">Confirm New Password</label>
+                                    <input type="password" id="confirm-password">
+                                </div>
+                                <button type="submit" class="btn save-btn">Change Password</button>
+                            </form>
+                        </div>
+                        <div id="notifications-tab" class="tab-pane">
+                            <h3>Notification Preferences</h3>
+                            <form id="notifications-form">
+                                <div class="form-check">
+                                    <input type="checkbox" id="email-notifications" checked>
+                                    <label for="email-notifications">Email Notifications</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" id="sms-notifications" checked>
+                                    <label for="sms-notifications">SMS Notifications</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" id="grade-alerts" checked>
+                                    <label for="grade-alerts">Grade Alerts</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" id="attendance-alerts" checked>
+                                    <label for="attendance-alerts">Attendance Alerts</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" id="fee-reminders" checked>
+                                    <label for="fee-reminders">Fee Reminders</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" id="event-reminders" checked>
+                                    <label for="event-reminders">Event Reminders</label>
+                                </div>
+                                <button type="submit" class="btn save-btn">Save Preferences</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    // Login functionality
+    const loginForm = document.getElementById('login-form');
+    const loginSection = document.getElementById('login-section');
+    const portalSection = document.getElementById('portal-section');
+    
+    loginForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        
+        // Simple validation (in a real app, this would be server-side)
+        if (username === 'parent' && password === 'password') {
+            loginSection.style.display = 'none';
+            portalSection.style.display = 'grid';
+            document.getElementById('welcome-message').textContent = `Welcome, ${username}`;
+            
+            // Initialize the dashboard
+            initializeDashboard();
+        } else {
+            alert('Invalid username or password');
+        }
+    });
+    
+    // Logout functionality
+    document.getElementById('logout-btn').addEventListener('click', function(e) {
+        e.preventDefault();
+        portalSection.style.display = 'none';
+        loginSection.style.display = 'flex';
+        loginForm.reset();
+    });
+    
+    // Sidebar navigation
+    const sidebarItems = document.querySelectorAll('.sidebar nav ul li');
+    const contentSections = document.querySelectorAll('.content-section');
+    
+    sidebarItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const sectionId = this.getAttribute('data-section') + '-section';
+            
+            // Update active state in sidebar
+            sidebarItems.forEach(i => i.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Show the corresponding section
+            contentSections.forEach(section => {
+                section.classList.remove('active');
+                if (section.id === sectionId) {
+                    section.classList.add('active');
+                    
+                    // Initialize specific section if needed
+                    if (sectionId === 'attendance-section') {
+                        initializeAttendance();
+                    } else if (sectionId === 'grades-section') {
+                        initializeGrades();
+                    } else if (sectionId === 'timetable-section') {
+                        initializeTimetable();
+                    } else if (sectionId === 'fees-section') {
+                        initializeFees();
+                    }
+                }
+            });
+        });
+    });
+    
+    // Payment method toggle
+    const paymentMethod = document.getElementById('payment-method');
+    const cardDetails = document.getElementById('card-details');
+    const mobilePayment = document.getElementById('mobile-payment');
+    
+    paymentMethod.addEventListener('change', function() {
+        if (this.value === 'credit-card' || this.value === 'debit-card') {
+            cardDetails.style.display = 'block';
+            mobilePayment.style.display = 'none';
+        } else {
+            cardDetails.style.display = 'none';
+            mobilePayment.style.display = 'block';
+        }
+    });
+    
+    // Settings tabs
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabPanes = document.querySelectorAll('.tab-pane');
+    
+    tabButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const tabId = this.getAttribute('data-tab') + '-tab';
+            
+            // Update active state in tabs
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Show the corresponding pane
+            tabPanes.forEach(pane => {
+                pane.classList.remove('active');
+                if (pane.id === tabId) {
+                    pane.classList.add('active');
+                }
+            });
+        });
+    });
+    
+    // Message item click
+    const messageItems = document.querySelectorAll('.message-item');
+    
+    messageItems.forEach(item => {
+        item.addEventListener('click', function() {
+            messageItems.forEach(i => i.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+    
+    // Initialize functions for different sections
+    function initializeDashboard() {
+        // Sample data for dashboard
+        document.getElementById('student-name').textContent = '';
+        document.getElementById('attendance-percent').textContent = '95%';
+        document.getElementById('average-grade').textContent = 'A-';
+        document.getElementById('fee-status').textContent = 'Paid';
+    }
+    
+    function initializeAttendance() {
+        // Sample attendance data
+        const attendanceData = [
+            { date: '2023-06-01', status: 'Present', remarks: '' },
+            { date: '2023-06-02', status: 'Present', remarks: '' },
+            { date: '2023-06-03', status: 'Absent', remarks: 'Sick' },
+            { date: '2023-06-04', status: 'Present', remarks: '' },
+            { date: '2023-06-05', status: 'Late', remarks: 'Traffic' },
+            { date: '2023-06-06', status: 'Present', remarks: '' },
+            { date: '2023-06-07', status: 'Present', remarks: '' },
+            { date: '2023-06-08', status: 'Present', remarks: '' },
+            { date: '2023-06-09', status: 'Absent', remarks: 'Family event' },
+            { date: '2023-06-10', status: 'Present', remarks: '' }
+        ];
+        
+        const attendanceTable = document.getElementById('attendance-table');
+        attendanceTable.innerHTML = '';
+        
+        attendanceData.forEach(entry => {
+            const row = document.createElement('tr');
+            
+            const statusClass = entry.status === 'Present' ? 'present' : 
+                               entry.status === 'Absent' ? 'absent' : 'late';
+            
+            row.innerHTML = `
+                <td>${formatDate(entry.date)}</td>
+                <td><span class="status-badge ${statusClass}">${entry.status}</span></td>
+                <td>${entry.remarks}</td>
+            `;
+            
+            attendanceTable.appendChild(row);
+        });
+        
+        // Add some styling to status badges
+        const style = document.createElement('style');
+        style.textContent = `
+            .status-badge {
+                padding: 0.3rem 0.6rem;
+                border-radius: 20px;
+                font-size: 0.8rem;
+                font-weight: 600;
+            }
+            .status-badge.present {
+                background: #e8f5e9;
+                color: #4CAF50;
+            }
+            .status-badge.absent {
+                background: #ffebee;
+                color: #F44336;
+            }
+            .status-badge.late {
+                background: #fff8e1;
+                color: #FF9800;
+            }
+        `;
+        document.head.appendChild(style);
+    }
+    
+    function initializeGrades() {
+        // Sample grades data
+        const gradesData = [
+            { subject: 'Mathematics', marks: 92, total: 100, grade: 'A', remarks: 'Excellent' },
+            { subject: 'English', marks: 88, total: 100, grade: 'A-', remarks: 'Good' },
+            { subject: 'Science', marks: 85, total: 100, grade: 'B+', remarks: 'Good' },
+            { subject: 'Urdu', marks: 78, total: 100, grade: 'B', remarks: 'Satisfactory' },
+            { subject: 'Islamiat', marks: 95, total: 100, grade: 'A+', remarks: 'Excellent' },
+            { subject: 'Social Studies', marks: 82, total: 100, grade: 'B+', remarks: 'Good' },
+            { subject: 'Computer Science', marks: 90, total: 100, grade: 'A', remarks: 'Excellent' }
+        ];
+        
+        const gradesTable = document.getElementById('grades-data');
+        gradesTable.innerHTML = '';
+        
+        gradesData.forEach(subject => {
+            const row = document.createElement('tr');
+            const percentage = (subject.marks / subject.total * 100).toFixed(1);
+            
+            row.innerHTML = `
+                <td>${subject.subject}</td>
+                <td>${subject.marks}</td>
+                <td>${subject.total}</td>
+                <td>${percentage}%</td>
+                <td>${subject.grade}</td>
+                <td>${subject.remarks}</td>
+            `;
+            
+            gradesTable.appendChild(row);
+        });
+        
+        // Initialize grades chart
+        const ctx = document.getElementById('grades-chart').getContext('2d');
+        const chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: gradesData.map(subject => subject.subject),
+                datasets: [{
+                    label: 'Marks Obtained',
+                    data: gradesData.map(subject => subject.marks),
+                    backgroundColor: '#2989d8',
+                    borderColor: '#1e5799',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: {
+                            display: true,
+                            text: 'Marks'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Subjects'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            afterLabel: function(context) {
+                                const data = gradesData[context.dataIndex];
+                                return `Grade: ${data.grade}\nRemarks: ${data.remarks}`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+    
+    function initializeTimetable() {
+        // Sample timetable data
+        const timetableData = [
+            {
+                time: '08:00 - 08:45',
+                monday: 'Mathematics',
+                tuesday: 'English',
+                wednesday: 'Science',
+                thursday: 'Mathematics',
+                friday: 'Urdu',
+                saturday: 'Islamiat'
+            },
+            {
+                time: '08:45 - 09:30',
+                monday: 'English',
+                tuesday: 'Mathematics',
+                wednesday: 'Computer Science',
+                thursday: 'Science',
+                friday: 'English',
+                saturday: 'Social Studies'
+            },
+            {
+                time: '09:30 - 10:15',
+                monday: 'Science',
+                tuesday: 'Urdu',
+                wednesday: 'Mathematics',
+                thursday: 'English',
+                friday: 'Science',
+                saturday: 'Mathematics'
+            },
+            {
+                time: '10:15 - 10:30',
+                monday: 'Break',
+                tuesday: 'Break',
+                wednesday: 'Break',
+                thursday: 'Break',
+                friday: 'Break',
+                saturday: 'Break'
+            },
+            {
+                time: '10:30 - 11:15',
+                monday: 'Urdu',
+                tuesday: 'Science',
+                wednesday: 'English',
+                thursday: 'Computer Science',
+                friday: 'Mathematics',
+                saturday: 'English'
+            },
+            {
+                time: '11:15 - 12:00',
+                monday: 'Islamiat',
+                tuesday: 'Social Studies',
+                wednesday: 'Urdu',
+                thursday: 'Islamiat',
+                friday: 'Computer Science',
+                saturday: 'Science'
+            }
+        ];
+        
+        const timetableTable = document.getElementById('timetable-data');
+        timetableTable.innerHTML = '';
+        
+        timetableData.forEach(period => {
+            const row = document.createElement('tr');
+            
+            row.innerHTML = `
+                <td>${period.time}</td>
+                <td>${period.monday}</td>
+                <td>${period.tuesday}</td>
+                <td>${period.wednesday}</td>
+                <td>${period.thursday}</td>
+                <td>${period.friday}</td>
+                <td>${period.saturday}</td>
+            `;
+            
+            timetableTable.appendChild(row);
+        });
+    }
+    
+    function initializeFees() {
+        // Sample fee history data
+        const feeHistoryData = [
+            {
+                date: '2023-05-05',
+                amount: 'Rs. 5,000',
+                method: 'Bank Transfer',
+                transaction: 'KZMS-2023-125-001',
+                status: 'Paid',
+                receipt: 'Download'
+            },
+            {
+                date: '2023-04-05',
+                amount: 'Rs. 5,000',
+                method: 'JazzCash',
+                transaction: 'KZMS-2023-125-002',
+                status: 'Paid',
+                receipt: 'Download'
+            },
+            {
+                date: '2023-03-05',
+                amount: 'Rs. 5,000',
+                method: 'EasyPaisa',
+                transaction: 'KZMS-2023-125-003',
+                status: 'Paid',
+                receipt: 'Download'
+            },
+            {
+                date: '2023-02-05',
+                amount: 'Rs. 5,000',
+                method: 'Bank Transfer',
+                transaction: 'KZMS-2023-125-004',
+                status: 'Paid',
+                receipt: 'Download'
+            }
+        ];
+        
+        const feeHistoryTable = document.getElementById('fee-history-data');
+        feeHistoryTable.innerHTML = '';
+        
+        feeHistoryData.forEach(entry => {
+            const row = document.createElement('tr');
+            
+            row.innerHTML = `
+                <td>${formatDate(entry.date)}</td>
+                <td>${entry.amount}</td>
+                <td>${entry.method}</td>
+                <td>${entry.transaction}</td>
+                <td><span class="status-badge paid">${entry.status}</span></td>
+                <td><a href="#" class="receipt-link">${entry.receipt}</a></td>
+            `;
+            
+            feeHistoryTable.appendChild(row);
+        });
+        
+        // Add some styling to status badges
+        const style = document.createElement('style');
+        style.textContent = `
+            .status-badge.paid {
+                padding: 0.3rem 0.6rem;
+                border-radius: 20px;
+                font-size: 0.8rem;
+                font-weight: 600;
+                background: #e8f5e9;
+                color: #4CAF50;
+            }
+            .receipt-link {
+                color: #2989d8;
+                text-decoration: none;
+            }
+            .receipt-link:hover {
+                text-decoration: underline;
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Payment form submission
+        document.getElementById('payment-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Payment functionality would be implemented here in a real application');
+        });
+    }
+    
+    // Helper function to format dates
+    function formatDate(dateString) {
+        const options = { year: 'numeric', month: 'short', day: 'numeric' };
+        return new Date(dateString).toLocaleDateString('en-US', options);
+    }
+});
+    </script>
+</body>
+</html>

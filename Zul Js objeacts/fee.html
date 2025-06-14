@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khalil Zai Model School - Tuition & Fees</title>
+    <style>
+        :root {
+            --primary-color: #1a5276;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-bg: #f5f5f5;
+            --white: #ffffff;
+            --text-dark: #333333;
+            --text-light: #777777;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .fee-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .fee-table th, .fee-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .fee-table th {
+            background-color: var(--primary-color);
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .fee-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .fee-table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .highlight {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .note {
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--secondary-color);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .note p {
+            margin-bottom: 10px;
+        }
+
+        .note ul {
+            padding-left: 20px;
+        }
+
+        .note li {
+            margin-bottom: 5px;
+        }
+
+        .payment-methods {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .method {
+            background-color: var(--white);
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            padding: 15px;
+            flex: 1 1 200px;
+            min-width: 200px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .method h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .fee-table th, .fee-table td {
+                padding: 10px;
+                font-size: 0.9rem;
+            }
+
+            .payment-methods {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Khalil Zai Model School</h1>
+            <p>Tuition & Fees Structure for Academic Year 2023-2024</p>
+        </div>
+
+        <div class="content">
+            <h2>Fee Breakdown</h2>
+            <table class="fee-table">
+                <thead>
+                    <tr>
+                        <th>Fee Type</th>
+                        <th>Amount (PKR)</th>
+                        <th>Frequency</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Admission Fee</td>
+                        <td class="highlight">10,000</td>
+                        <td>One-time (New Students)</td>
+                        <td>Non-refundable</td>
+                    </tr>
+                    <tr>
+                        <td>Tuition Fee</td>
+                        <td class="highlight">2,000</td>
+                        <td>Monthly</td>
+                        <td>Payable by 10th of each month</td>
+                    </tr>
+                    <tr>
+                        <td>Registration Fee</td>
+                        <td>1,500</td>
+                        <td>Annual</td>
+                        <td>For returning students</td>
+                    </tr>
+                    <tr>
+                        <td>Examination Fee</td>
+                        <td>500</td>
+                        <td>Per Term</td>
+                        <td>For mid-term and final exams</td>
+                    </tr>
+                    <tr>
+                        <td>Sports Fee</td>
+                        <td>300</td>
+                        <td>Monthly</td>
+                        <td>Optional for extracurriculars</td>
+                    </tr>
+                    <tr>
+                        <td>Transportation Fee</td>
+                        <td>1,500</td>
+                        <td>Monthly</td>
+                        <td>For bus service users</td>
+                    </tr>
+                    <tr>
+                        <td>Uniform & Books</td>
+                        <td>3,500</td>
+                        <td>Annual</td>
+                        <td>Includes complete set</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="note">
+                <h3>Important Notes:</h3>
+                <ul>
+                    <li>A <strong>10% discount</strong> is available for siblings.</li>
+                    <li>Tuition fees must be paid by the <strong>10th of each month</strong> to avoid late charges.</li>
+                    <li>A <strong>5% late fee</strong> will be applied after the due date.</li>
+                    <li>Admission and registration fees are <strong>non-refundable</strong>.</li>
+                    <li>Fees are subject to revision with prior notice.</li>
+                </ul>
+            </div>
+
+            <h2>Payment Methods</h2>
+            <div class="payment-methods">
+                <div class="method">
+                    <h3>Bank Transfer</h3>
+                    <p>Account Name: Khalil Zai Model School</p>
+                    <p>Bank: Habib Bank Limited</p>
+                    <p>Account #: 1234-5678901-2</p>
+                    <p>IBAN: PK00HABB1234567890123</p>
+                </div>
+                <div class="method">
+                    <h3>EasyPaisa/JazzCash</h3>
+                    <p>Send payment to:</p>
+                    <p>0321-1234567</p>
+                    <p>Include student ID in reference</p>
+                </div>
+                <div class="method">
+                    <h3>Cash Payment</h3>
+                    <p>School Accounts Office</p>
+                    <p>Monday-Friday: 8:00 AM - 2:00 PM</p>
+                    <p>Saturday: 8:00 AM - 12:00 PM</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

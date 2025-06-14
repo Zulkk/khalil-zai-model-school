@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khalil Zai Model School - Policies</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a5276;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #f5f7fa;
+            --dark: #2c3e50;
+            --white: #ffffff;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Policy Cards */
+        .policy-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .policy-card {
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            width: 100%;
+            max-width: 350px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .policy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .policy-card-header {
+            background: var(--primary);
+            color: var(--white);
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .policy-card-header i {
+            font-size: 1.5rem;
+        }
+
+        .policy-card-body {
+            padding: 20px;
+        }
+
+        .policy-card-body ul {
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+
+        .policy-card-body li {
+            margin-bottom: 8px;
+        }
+
+        /* Accordion Effect */
+        .policy-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .policy-card.active .policy-details {
+            max-height: 500px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: var(--dark);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .policy-card {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-book-open"></i> Khalil Zai Model School Policies</h1>
+            <p>Ensuring a safe, disciplined, and productive learning environment</p>
+        </div>
+
+        <div class="policy-section">
+            <!-- Attendance Policy -->
+            <div class="policy-card" onclick="togglePolicy(this)">
+                <div class="policy-card-header">
+                    <i class="fas fa-calendar-check"></i>
+                    <h2>Attendance Policy</h2>
+                </div>
+                <div class="policy-card-body">
+                    <p>Regular attendance is mandatory for academic success.</p>
+                    <div class="policy-details">
+                        <ul>
+                            <li>Students must maintain <strong>85% attendance</strong> to sit for exams.</li>
+                            <li>Absences require a written excuse from parents/guardians.</li>
+                            <li>Medical leave requires a doctor's certificate.</li>
+                            <li>Late arrivals (after 8:15 AM) will be marked as half-day absent.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Discipline Policy -->
+            <div class="policy-card" onclick="togglePolicy(this)">
+                <div class="policy-card-header">
+                    <i class="fas fa-gavel"></i>
+                    <h2>Discipline Policy</h2>
+                </div>
+                <div class="policy-card-body">
+                    <p>We maintain a strict code of conduct for all students.</p>
+                    <div class="policy-details">
+                        <ul>
+                            <li>Respect for teachers, staff, and fellow students is mandatory.</li>
+                            <li><strong>Bullying, fighting, or vandalism</strong> will result in suspension.</li>
+                            <li>Use of mobile phones is prohibited during school hours.</li>
+                            <li>Repeated violations may lead to expulsion.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Uniform Policy -->
+            <div class="policy-card" onclick="togglePolicy(this)">
+                <div class="policy-card-header">
+                    <i class="fas fa-tshirt"></i>
+                    <h2>Uniform Policy</h2>
+                </div>
+                <div class="policy-card-body">
+                    <p>Proper uniform is required for all students.</p>
+                    <div class="policy-details">
+                        <ul>
+                            <li>Winter & summer uniforms must be worn as prescribed.</li>
+                            <li>No jewelry, colored hair, or makeup allowed.</li>
+                            <li>Sports uniform only on designated days.</li>
+                            <li>Non-compliance will result in disciplinary action.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fee Policy -->
+            <div class="policy-card" onclick="togglePolicy(this)">
+                <div class="policy-card-header">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <h2>Fee Policy</h2>
+                </div>
+                <div class="policy-card-body">
+                    <p>Timely fee payment ensures uninterrupted education.</p>
+                    <div class="policy-details">
+                        <ul>
+                            <li>Tuition fees due by the <strong>10th of each month</strong>.</li>
+                            <li>A <strong>5% late fee</strong> applies after the due date.</li>
+                            <li>Non-payment for two months may lead to suspension.</li>
+                            <li>Admission & registration fees are non-refundable.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Examination Policy -->
+            <div class="policy-card" onclick="togglePolicy(this)">
+                <div class="policy-card-header">
+                    <i class="fas fa-clipboard-check"></i>
+                    <h2>Examination Policy</h2>
+                </div>
+                <div class="policy-card-body">
+                    <p>Fair and transparent assessment procedures.</p>
+                    <div class="policy-details">
+                        <ul>
+                            <li>Two mid-terms and one final exam per year.</li>
+                            <li><strong>Cheating</strong> will result in a zero score.</li>
+                            <li>Re-exams only for students with valid medical reasons.</li>
+                            <li>Results are final and cannot be challenged.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Parental Involvement -->
+            <div class="policy-card" onclick="togglePolicy(this)">
+                <div class="policy-card-header">
+                    <i class="fas fa-users"></i>
+                    <h2>Parental Involvement</h2>
+                </div>
+                <div class="policy-card-body">
+                    <p>Parents play a key role in student success.</p>
+                    <div class="policy-details">
+                        <ul>
+                            <li>Mandatory attendance at <strong>PTM (Parent-Teacher Meetings)</strong>.</li>
+                            <li>Check student diaries daily for updates.</li>
+                            <li>Notify school of any concerns immediately.</li>
+                            <li>Volunteer opportunities available for school events.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2023 Khalil Zai Model School. All rights reserved.</p>
+            <p>For queries, contact: info@khalilzaischool.edu.pk | Phone: +92 123 4567890</p>
+        </div>
+    </div>
+
+    <script>
+        function togglePolicy(card) {
+            card.classList.toggle('active');
+            
+            // Close other open cards
+            const allCards = document.querySelectorAll('.policy-card');
+            allCards.forEach(otherCard => {
+                if (otherCard !== card && otherCard.classList.contains('active')) {
+                    otherCard.classList.remove('active');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

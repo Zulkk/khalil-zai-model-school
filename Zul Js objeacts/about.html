@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>learn more about us </title>
+    <style>
+
+        /* About Section */
+.about-section {
+    padding: 80px 0;
+    background-color: #f9f9f9;
+}
+
+.about-content {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    margin-bottom: 60px;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-text h2 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+.about-text p {
+    margin-bottom: 30px;
+    color: #555;
+    font-size: 1.1rem;
+}
+
+.about-image {
+    flex: 1;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.about-image img {
+    width: 100%;
+    height: 600px;
+    image-resolution: cover;
+    display: block;
+    transition: transform 0.5s;
+}
+
+.about-image:hover img {
+    transform: scale(1.05);
+}
+
+.about-features {
+    display: flex;
+    gap: 20px;
+    margin: 40px 0;
+}
+
+.feature {
+    flex: 1;
+    padding: 25px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.feature:hover {
+    transform: translateY(-10px);
+}
+
+.feature i {
+    font-size: 2.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+}
+
+.feature h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.feature p {
+    color: #000000;
+    font-size: 0.95rem;
+}
+
+.school-stats {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    background-color: var(--primary-color);
+    padding: 40px 20px;
+    border-radius: 10px;
+    color: #000000;
+}
+.stat {
+    color: #000000;
+}
+
+.stat h3 {
+
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+    color: var(--secondary-color);
+}
+
+.stat p {
+    font-size: 1.1rem;
+}
+
+/* Responsive Design for About Section */
+@media (max-width: 768px) {
+    .about-content {
+        flex-direction: column;
+    }
+    
+    .about-features {
+        flex-direction: column;
+    }
+    
+    .school-stats {
+        flex-direction: column;
+        gap: 30px;
+    }
+}
+    </style>
+</head>
+<body>
+     <section class="about-section">
+    <div class="container">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>Khalil Zai model school</h2>
+                <p>khalil zai model school has been providing exceptional education to students for over 35 years. Our mission is to nurture young minds and prepare them for the challenges of tomorrow.</p>
+                
+                <div class="about-features">
+                    <div class="feature">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h3>Academic Excellence</h3>
+                        <p>Consistently ranked among the top schools in the state with a 98% college acceptance rate.</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-users"></i>
+                        <h3>Experienced Faculty</h3>
+                        <p>Our teachers average 15+ years of experience with 75% holding advanced degrees.</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-futbol"></i>
+                        <h3>Extracurricular Programs</h3>
+                        <p>Over 10 clubs and sports teams to develop well-rounded individuals.</p>
+                    </div>
+                </div>
+                
+            
+            </div>
+            <div class="about-image">
+                <img src="atiq1.jpg" alt="Students in classroom">
+            </div>
+        </div>
+        
+        <div class="school-stats">
+            <div class="stat">
+                <h3>35+</h3>
+                <p>Years of Excellence</p>
+            </div>
+            <div class="stat">
+                <h3>3,200+</h3>
+                <p>Current Students</p>
+            </div>
+            <div class="stat">
+                <h3>98%</h3>
+                <p>College Acceptance</p>
+            </div>
+            <div class="stat">
+                <h3>10+</h3>
+                <p>Clubs & Activities</p>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
